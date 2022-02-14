@@ -21,6 +21,7 @@ jobs:
       with:
         subdir: 'conda'
         anacondatoken: ${{ secrets.ANACONDA_TOKEN }}
+        additional_channels: "-c pytorch -c helitonmrf"
         platforms: 'win osx linux'
 ```
 
@@ -47,9 +48,3 @@ jobs:
 
 1. Get an Anaconda token (with read and write API access) at `anaconda.org/USERNAME/settings/access` 
 2. Add it to the Secrets of the Github repository as `ANACONDA_TOKEN`
-
-### Supported anaconda channels
-- conda-forge
-- pytorch
-- fcakyon
-- districtdatalabs
