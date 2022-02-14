@@ -1,6 +1,6 @@
 name: 'Publish Conda'
 description: 'Build and Publish Conda package to Anaconda'
-author: 'Fatih C Akyon'
+author: 'Fatih C Akyon; Heliton Martins'
 branding:
   icon: 'package'  
   color: 'purple'
@@ -13,6 +13,9 @@ inputs:
   platforms:
     description: 'Platforms to publish [osx/linux/win]'
     default: 'win osx linux'
+  additional_channels:
+    description: 'Additional channels to be used with conda. Must be in the format "-c <channel1> -c <channel2>"'
+    default: ''
 runs:
   using: 'docker'
   image: 'Dockerfile'
