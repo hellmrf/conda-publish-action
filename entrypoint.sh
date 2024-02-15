@@ -25,7 +25,7 @@ check_if_meta_yaml_file_exists() {
 
 build_package(){
     # Build for Linux
-    conda build $INPUT_ADDITIONAL_CHANNELS --output-folder . .
+    conda build $INPUT_ADDITIONAL_PARAMS --output-folder . .
 
     # Convert to other platforms: OSX, WIN
     if [[ $INPUT_PLATFORMS == *"osx"* ]]; then

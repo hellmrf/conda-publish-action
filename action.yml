@@ -13,9 +13,12 @@ inputs:
   platforms:
     description: 'Platforms to publish [osx/linux/win]'
     default: 'win osx linux'
-  additional_channels:
-    description: 'Additional channels to be used with conda. Must be in the format "-c <channel1> -c <channel2>"'
+  additional_params:
+    description: 'Additional parameters to pass to conda build'
     default: ''
+  label:
+    description: 'Label for the conda package (see https://docs.anaconda.com/free/anacondaorg/user-guide/work-with-labels/)'
+    default: 'main'
 runs:
   using: 'docker'
   image: 'Dockerfile'
