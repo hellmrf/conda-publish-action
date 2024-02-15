@@ -25,7 +25,7 @@ check_if_meta_yaml_file_exists() {
 
 build_package(){
     # Build for Linux
-    conda build -c conda-forge $INPUT_ADDITIONAL_CHANNELS --output-folder . .
+    conda build $INPUT_ADDITIONAL_CHANNELS --output-folder . .
 
     # Convert to other platforms: OSX, WIN
     if [[ $INPUT_PLATFORMS == *"osx"* ]]; then
@@ -39,13 +39,13 @@ build_package(){
 upload_package(){
     export ANACONDA_API_TOKEN=$INPUT_ANACONDATOKEN
     if [[ $INPUT_PLATFORMS == *"osx"* ]]; then
-    anaconda upload --label main osx-64/*.tar.bz2
+        anaconda upload --label $INPUT_LABEL osx-64/*.tar.bz2
     fi
     if [[ $INPUT_PLATFORMS == *"linux"* ]]; then
-    anaconda upload --label main linux-64/*.tar.bz2
+        anaconda upload --label $INPUT_LABEL linux-64/*.tar.bz2
     fi
     if [[ $INPUT_PLATFORMS == *"win"* ]]; then
-    anaconda upload --label main win-64/*.tar.bz2
+        anaconda upload --label $INPUT_LABEL win-64/*.tar.bz2
     fi
 }
 
