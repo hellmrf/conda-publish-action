@@ -17,11 +17,11 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: publish-to-conda
-      uses: hellmrf/conda-publish-action@v1.3
+      uses: hellmrf/conda-publish-action@v1.5
       with:
         subdir: 'conda'
         anacondatoken: ${{ secrets.ANACONDA_TOKEN }}
-        additional_channels: "-c pytorch -c helitonmrf"
+        additional_params: "-c mychannel"
         platforms: 'win osx linux'
 ```
 
@@ -46,5 +46,5 @@ jobs:
 
 ### ANACONDA_TOKEN
 
-1. Get an Anaconda token (with read and write API access) at `anaconda.org/USERNAME/settings/access` 
+1. Get an Anaconda token (with read and write API access) at [`anaconda.org/USERNAME/settings/access`](https://anaconda.org/USERNAME/settings/access)
 2. Add it to the Secrets of the Github repository as `ANACONDA_TOKEN`
