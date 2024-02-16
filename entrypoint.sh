@@ -19,15 +19,10 @@ check_if_meta_yaml_file_exists() {
 
 set_env(){
     export ANACONDA_API_TOKEN=$INPUT_ANACONDATOKEN
-    conda config --set always_yes yes --set changeps1 no --set auto_update_conda no
-    conda update -q conda
-    conda init
     if [ -f environment.yml ]; then
         conda env create -f environment.yml
         conda activate $(head -1 environment.yml | cut -d' ' -f2)
     fi
-    conda install -y anaconda-client conda-build conda-verify
-    conda config --set anaconda_upload yes
 }
 
 build_package(){

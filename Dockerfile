@@ -16,8 +16,10 @@ RUN conda --version
 LABEL "repository"="https://github.com/hellmrf/conda-publish-action"
 LABEL "maintainer"="Heliton Martins"
 
-RUN apt update
+RUN conda config --set anaconda_upload yes --set always_yes yes --set changeps1 no --set auto_update_conda no
+RUN conda update -q conda
 RUN conda install -y anaconda-client conda-build conda-verify
+RUN conda init bash
 
 COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
