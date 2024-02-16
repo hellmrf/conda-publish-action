@@ -5,9 +5,6 @@ branding:
   icon: 'package'  
   color: 'purple'
 inputs: 
-  subdir:
-    description: 'Sub-directory with conda recipe'
-    default: '.'
   anacondatoken:
     description: 'Anaconda access token'
   platforms:

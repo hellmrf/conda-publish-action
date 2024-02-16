@@ -3,12 +3,6 @@
 set -ex
 set -o pipefail
 
-go_to_build_dir() {
-    if [ ! -z $INPUT_SUBDIR ]; then
-        cd $INPUT_SUBDIR
-    fi
-}
-
 check_if_setup_file_exists() {
     if [ ! -f setup.py ]; then
         echo "setup.py must exist in the directory that is being packaged and published."
@@ -50,7 +44,6 @@ upload_package(){
 }
 
 check_if_setup_file_exists
-go_to_build_dir
 check_if_meta_yaml_file_exists
 build_package
 upload_package
