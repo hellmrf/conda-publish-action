@@ -11,11 +11,9 @@ inputs:
     description: 'Platforms to publish [osx/linux/win]'
     default: 'win osx linux'
   additional_params:
-    description: 'Additional parameters to pass to conda build'
+    description: 'Additional parameters to pass to conda build. See conda build --help for more information.'
     default: ''
-  label:
-    description: 'Label for the conda package (see https://docs.anaconda.com/free/anacondaorg/user-guide/work-with-labels/)'
-    default: 'main'
+
 runs:
   using: 'docker'
   image: 'Dockerfile'

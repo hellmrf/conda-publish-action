@@ -17,6 +17,16 @@ check_if_meta_yaml_file_exists() {
     fi
 }
 
+set_env(){
+    export ANACONDA_API_TOKEN=$INPUT_ANACONDATOKEN
+    if [ -f environment.yml ]; then
+        conda env create -f environment.yml
+        conda activate $(head -1 environment.yml | cut -d' ' -f2)
+    fi
+    conda install -y anaconda-client conda-build conda-verify
+    conda config --set anaconda_upload yes
+}
+
 build_package(){
     # Build for Linux
     conda build $INPUT_ADDITIONAL_PARAMS --output-folder . .
@@ -31,7 +41,6 @@ build_package(){
 }
 
 upload_package(){
-    export ANACONDA_API_TOKEN=$INPUT_ANACONDATOKEN
     if [[ $INPUT_PLATFORMS == *"osx"* ]]; then
         anaconda upload --label $INPUT_LABEL osx-64/*.tar.bz2
     fi
@@ -45,5 +54,6 @@ upload_package(){
 
 check_if_setup_file_exists
 check_if_meta_yaml_file_exists
+set_env
 build_package
 upload_package
