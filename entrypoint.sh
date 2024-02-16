@@ -40,20 +40,7 @@ build_package(){
     fi
 }
 
-upload_package(){
-    if [[ $INPUT_PLATFORMS == *"osx"* ]]; then
-        anaconda upload --label $INPUT_LABEL osx-64/*.tar.bz2
-    fi
-    if [[ $INPUT_PLATFORMS == *"linux"* ]]; then
-        anaconda upload --label $INPUT_LABEL linux-64/*.tar.bz2
-    fi
-    if [[ $INPUT_PLATFORMS == *"win"* ]]; then
-        anaconda upload --label $INPUT_LABEL win-64/*.tar.bz2
-    fi
-}
-
 check_if_setup_file_exists
 check_if_meta_yaml_file_exists
 set_env
 build_package
-upload_package
